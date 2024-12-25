@@ -1,0 +1,240 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll, allow vertical scroll */
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(45deg, #e6e5e7, #a3bce7);
+  min-height: 100vh; /* Ensure the body takes up at least the full viewport height */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Allow vertical scroll */
+  position: relative;
+}
+
+/* Bubble Gradient Background */
+.bubble-gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(238, 174, 202, 0.2) 0%, rgba(148, 187, 233, 0.2) 100%);
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1; /* Ensure it stays behind other content */
+}
+
+.bubble-gradient::before, .bubble-gradient::after, .bubble, .icon {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: bubble 20s linear infinite;
+}
+
+.bubble-gradient::before {
+  width: 30rem;
+  height: 30rem;
+  top: 10%;
+  left: 10%;
+  background: rgba(238, 174, 202, 0.4);
+}
+
+.bubble-gradient::after {
+  width: 20rem;
+  height: 20rem;
+  bottom: 10%;
+  right: 10%;
+  background: rgba(148, 187, 233, 0.4);
+}
+
+.bubble {
+  width: 15rem;
+  height: 15rem;
+  background: rgba(144, 238, 144, 0.4);
+  animation-duration: 25s;
+}
+
+.icon {
+  width: 5rem;
+  height: 5rem;
+  animation-duration: 30s;
+}
+
+@keyframes bubble {
+  0% {
+    transform: scale(0.9) translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.1) translateY(-20%) rotate(360deg);
+  }
+  100% {
+    transform: scale(0.9) translateY(0) rotate(720deg);
+  }
+}
+
+/* Auth Container - Full Screen */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1; /* Allow the container to grow */
+  position: relative;
+}
+
+/* Auth Content */
+.auth-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  overflow: hidden;
+}
+
+/* Form Container */
+.form-container {
+  width: 100%;
+  text-align: center;
+}
+
+.form-title {
+  font-size: 2rem;
+  color: #2575fc;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+/* Form Inputs */
+.auth-input {
+  width: 100%;
+  padding: 15px;
+  margin: 12px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  transition: border-color 0.3s ease;
+}
+
+.auth-input:focus {
+  border-color: #2575fc;
+  outline: none;
+}
+
+/* Submit Button */
+.auth-submit-btn {
+  width: 100%;
+  padding: 15px;
+  background-color: #2575fc;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-submit-btn:hover {
+  background-color: #1a5ebf;
+}
+
+/* Toggle Form Button */
+.toggle-form-btn {
+  color: #2575fc;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 20px;
+}
+
+/* Password Toggle */
+.toggle-password {
+  background: none;
+  border: none;
+  color: #2575fc;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Features Section */
+.features-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.features-title {
+  font-size: 1.5rem;
+  color: #2575fc;
+}
+
+.features-description {
+  color: #333;
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+
+.features-list {
+  list-style-type: none;
+  margin: 15px 0;
+  padding: 0;
+}
+
+.features-list li {
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+.features-note {
+  font-size: 1rem;
+  color: #2575fc;
+  margin-top: 15px;
+}
+
+/* Mobile-specific Styles */
+@media (max-width: 768px) {
+  .auth-content {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+  }
+
+  .auth-input {
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .auth-submit-btn {
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .toggle-form-btn {
+    font-size: 0.9rem;
+  }
+
+  .features-title {
+    font-size: 1.2rem;
+  }
+
+  .features-description {
+    font-size: 1rem;
+  }
+
+  .features-list li {
+    font-size: 1rem;
+  }
+}
